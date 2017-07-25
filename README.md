@@ -15,8 +15,9 @@ grp_o = grp_m.calc_groupby();
     gc_i = 44 # I want 44 groups
     my_d = grp_o.calc_groupby(my_l, gc_i)
 ```    
-my_d returns an AssertionError excpetion, with following message
-"Parameter [Desired Group Count] cannot be more than number of list elements"
+:x:  my_d returns an "AssertionError" exception, with the following message
+
+> "Parameter [Desired Group Count] cannot be more than number of list elements"
 
 ### Scenario 1
 ```python
