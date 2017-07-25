@@ -1,9 +1,10 @@
-import numpy as np
 import sys 
 
 if sys.version_info <= (3, 0):
     print ("Sorry, this program requires Python 3.x, not Python 2.x\n")
     sys.exit(1)
+
+import numpy as np
 
 """
 Problem Statement: 
@@ -146,7 +147,7 @@ class calc_groupby:
 		ValueError
 			When list_l is empty
 
-			Example 1: 
+		Example 1: 
 		-------
 		>>> t.calc_total_group_count ([1,2,4,3,6,38,33,89,86,87,99]) 
 		7
@@ -170,7 +171,7 @@ class calc_groupby:
 			groups_a, diff_a = self.__get_groups (sorted_pair_a);
 			return len(groups_a);
 
-		except (ValueError) as error:
+		except (ValueError, ValueError) as error:
 			raise;
 
 
@@ -193,8 +194,7 @@ class calc_groupby:
 		-------
 		ValueError
 			When list_l is empty
-		
-		AssertionError
+			or
 			When groupcount_i (Desired Group count) is larger than number of elements in the list_l
 			
 		Example 1: 
@@ -213,7 +213,7 @@ class calc_groupby:
 		-------
 		>>> t.calc_group_by ([1,2], 4) 
 		Traceback (most recent call last):
-		AssertionError: ('Parameter [Desired Group Count] cannot be more than number of list elements', [1, 2], 4)
+		ValueError: ('Parameter [Desired Group Count] cannot be more than number of list elements', [1, 2], 4)
 
 		"""
 
@@ -223,7 +223,7 @@ class calc_groupby:
 				raise ValueError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
 
 			if len(list_l) < groupcount_i:
-				raise AssertionError ('Parameter [Desired Group Count] cannot be more than number of list elements', list_l, groupcount_i)
+				raise ValueError ('Parameter [Desired Group Count] cannot be more than number of list elements', list_l, groupcount_i)
 
 			#end: parameter validation check
 
@@ -251,7 +251,7 @@ class calc_groupby:
 			
 			return result_d;
 
-		except (ValueError, AssertionError) as error:
+		except (ValueError, ValueError) as error:
 			raise;
 
 # end: public methods 
