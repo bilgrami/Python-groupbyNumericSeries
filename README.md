@@ -49,7 +49,21 @@ my_d should now be {0: [0], 1:[1]}
 my_d should now be {0: [0,1,2,4], 1:[22,23,24], 2:[44,46]}
 
 ---
-## run.py: 
-Execute ./run.py to see following output
-![Image of Sample run](https://raw.githubusercontent.com/bilgrami/Python-groupbyNumericSeries/master/docs/run_result.JPG)
+## Sample Execution - run.py: 
+Execute ./run.py contains some sample runs. 
+
+> python ./run.py
+
+Below is the most recent execution output
+![Image of run.py](https://raw.githubusercontent.com/bilgrami/Python-groupbyNumericSeries/master/docs/run_result.JPG)
+
+---
+## Regression doc test results: 
+Module file "calc_groupby.py" uses "doctest" to perform regression testing. Execute the tests by running the following command:
+
+> python ./calc_groupby.py -v 
+
+Below is the most recent execution output
+
+![Image of doctest_result](https://raw.githubusercontent.com/bilgrami/Python-groupbyNumericSeries/master/docs/doctest_result.JPG)
 
