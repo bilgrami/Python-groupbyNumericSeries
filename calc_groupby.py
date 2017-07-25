@@ -1,9 +1,10 @@
-import numpy as np
 import sys 
 
 if sys.version_info <= (3, 0):
     print ("Sorry, this program requires Python 3.x, not Python 2.x\n")
     sys.exit(1)
+
+import numpy as np
 
 """
 Problem Statement: 
@@ -143,7 +144,7 @@ class calc_groupby:
 
 		Raises
 		-------
-		FunctionInputError
+		ValueError
 			When list_l is empty
 
 		Example 1: 
@@ -155,14 +156,14 @@ class calc_groupby:
 		-------
 		>>> t.calc_total_group_count ([]) 
 		Traceback (most recent call last):
-			raise FunctionInputError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
-		FunctionInputError: ('Parameter [list] must be a valid natural number list with 1 or more elements', [])
+			raise ValueError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
+		ValueError: ('Parameter [list] must be a valid natural number list with 1 or more elements', [])
 
 		"""
 		try:
 			#start: parameter validation check
 			if len(list_l) < 1:
-				raise FunctionInputError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
+				raise ValueError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
 
 			#end: parameter validation check
 
@@ -170,7 +171,7 @@ class calc_groupby:
 			groups_a, diff_a = self.__get_groups (sorted_pair_a);
 			return len(groups_a);
 
-		except (FunctionInputError, ValueError) as error:
+		except (ValueError, ValueError) as error:
 			raise;
 
 
@@ -191,7 +192,7 @@ class calc_groupby:
 
 		Raises
 		-------
-		FunctionInputError
+		ValueError
 			When list_l is empty
 			or
 			When groupcount_i (Desired Group count) is larger than number of elements in the list_l
@@ -205,24 +206,24 @@ class calc_groupby:
 		-------
 		>>> t.calc_group_by ([], 4) 
 		Traceback (most recent call last):
-			raise FunctionInputError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
-		FunctionInputError: ('Parameter [list] must be a valid natural number list with 1 or more elements', [])
+			raise ValueError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
+		ValueError: ('Parameter [list] must be a valid natural number list with 1 or more elements', [])
 
 		Example 3: Invalid Desired Group count
 		-------
 		>>> t.calc_group_by ([1,2], 4) 
 		Traceback (most recent call last):
-		FunctionInputError: ('Parameter [Desired Group Count] cannot be more than number of list elements', [1, 2], 4)
+		ValueError: ('Parameter [Desired Group Count] cannot be more than number of list elements', [1, 2], 4)
 
 		"""
 
 		try:
 			#start: parameter validation check
 			if len(list_l) < 1:
-				raise FunctionInputError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
+				raise ValueError ("Parameter [list] must be a valid natural number list with 1 or more elements", list_l)
 
 			if len(list_l) < groupcount_i:
-				raise FunctionInputError ('Parameter [Desired Group Count] cannot be more than number of list elements', list_l, groupcount_i)
+				raise ValueError ('Parameter [Desired Group Count] cannot be more than number of list elements', list_l, groupcount_i)
 
 			#end: parameter validation check
 
@@ -250,7 +251,7 @@ class calc_groupby:
 			
 			return result_d;
 
-		except (FunctionInputError, ValueError) as error:
+		except (ValueError, ValueError) as error:
 			raise;
 
 # end: public methods 

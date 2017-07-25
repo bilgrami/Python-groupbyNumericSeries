@@ -15,7 +15,16 @@ grp_o = grp_m.calc_groupby();
     gc_i = 44 # I want 44 groups
     my_d = grp_o.calc_groupby(my_l, gc_i)
 ```    
-:x:  my_d returns an "AssertionError" exception, with the following message
+:x:  my_d returns a "ValueError" exception, with the following message
+
+> "Parameter [list] must be a valid natural number list with 1 or more elements"
+
+```python
+    my_l = [1] # Find all groups in this list
+    gc_i = 44 # I want 44 groups
+    my_d = grp_o.calc_groupby(my_l, gc_i)
+```    
+:x:  my_d returns a "ValueError" exception, with the following message
 
 > "Parameter [Desired Group Count] cannot be more than number of list elements"
 
