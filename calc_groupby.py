@@ -1,4 +1,9 @@
 import numpy as np
+import sys 
+
+if sys.version_info <= (3, 0):
+    print ("Sorry, this program requires Python 3.x, not Python 2.x\n")
+    sys.exit(1)
 
 """
 Problem Statement: 
@@ -24,7 +29,7 @@ calc_total_group_count (list_l)
 		list_l = [1,2,4,3,6,38,33,89,86,87,99]
 		total_gc_i = calc_total_group_count(list_l)
 	Out:
-		6
+		7
 """
 
 class calc_groupby:
@@ -136,7 +141,12 @@ class calc_groupby:
 		int
 		Total number of possible groups the list can be divided into
 
-		Example 1: 
+		Raises
+		-------
+		ValueError
+			When list_l is empty
+
+			Example 1: 
 		-------
 		>>> t.calc_total_group_count ([1,2,4,3,6,38,33,89,86,87,99]) 
 		7
@@ -160,7 +170,7 @@ class calc_groupby:
 			groups_a, diff_a = self.__get_groups (sorted_pair_a);
 			return len(groups_a);
 
-		except (ValueError, AssertionError) as error:
+		except (ValueError) as error:
 			raise;
 
 
@@ -179,6 +189,14 @@ class calc_groupby:
 		-------
 		dict { group_id, [series of numbers belonging to the group] }
 
+		Raises
+		-------
+		ValueError
+			When list_l is empty
+		
+		AssertionError
+			When groupcount_i (Desired Group count) is larger than number of elements in the list_l
+			
 		Example 1: 
 		-------
 		>>> t.calc_group_by ([1,2,4,3,6,38,33,89,86,87,99], 4) 
